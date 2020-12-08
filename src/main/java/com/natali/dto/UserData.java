@@ -1,4 +1,4 @@
-package com.natali.entity;
+package com.natali.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +12,9 @@ public class UserData {
     private String email;
     private String name;
     private String surname;
+
+    public UserData() {
+    }
 
     public UserData(int id, String name, String surname, String email, String login, String password) {
         this.id = id;

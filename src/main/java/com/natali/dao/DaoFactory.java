@@ -4,6 +4,7 @@ import com.natali.dao.connection.ConnectionProvider;
 import com.natali.dao.impl.SqlRentDao;
 import com.natali.dao.impl.SqlUserDao;
 import com.natali.dao.interfaces.RentDao;
+import com.natali.dao.interfaces.UserDao;
 import com.natali.entity.User;
 import lombok.Getter;
 
@@ -14,7 +15,7 @@ public class DaoFactory {
 
     private static ConnectionProvider connectionProvider;
 
-    private final Dao<User> userDao;
+    private final UserDao userDao;
     private final RentDao rentDao;
 
     public static void init(ConnectionProvider connectionProvider) {
@@ -23,7 +24,7 @@ public class DaoFactory {
     }
 
     private DaoFactory() {
-        userDao = new SqlUserDao(connectionProvider);
+        userDao = new SqlUserDao();
         rentDao = new SqlRentDao(connectionProvider);
     }
 }

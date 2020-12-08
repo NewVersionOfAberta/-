@@ -14,24 +14,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-
-public class AuthorizationCommand implements Command {
-    private static final String AUTH_JSP_PATH = "/WEB-INF/jsp/guests/login.jsp";
-    private static final String CATALOG_JSP_PATH = "/WEB-INF/jsp/rent/rent.jsp";
-
+public class RegistrationCommand implements Command {
     private static final String PARAMETER_LOGIN = "login";
     private static final String PARAMETER_PASSWORD = "password";
 
+    private static final String AUTH_JSP_PATH = "/WEB-INF/jsp/guests/auth.jsp";
+    private static final String REG_JSP_PATH = "/WEB-INF/jsp/guests/reg.jsp";
+
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String login;
         String password;
 
         login = request.getParameter(PARAMETER_LOGIN);
         password = DigestUtils.shaHex(request.getParameter(PARAMETER_PASSWORD));
 
-        UserService service = ServiceFactory.getInstance().getUserService();
+        UserService userService = ServiceFactory.getInstance().getUserService();
 
         UserData userData = new UserData();
 
@@ -41,17 +40,16 @@ public class AuthorizationCommand implements Command {
         userData.setPassword(password);
 
         try {
-            User user = service.authorization(login, password);
+            User user = userService.authorization(login, password);
 
             request.setAttribute("userObject", user);
-            page = CATALOG_JSP_PATH;
+            page = AUTH_JSP_PATH;
         } catch (ServiceException e) {
             request.setAttribute("error", "Error. Try again!");
-            page = AUTH_JSP_PATH;
+            page = REG_JSP_PATH;
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(page);
         dispatcher.forward(request, response);
     }
-
 }

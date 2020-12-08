@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Authorization</h1>
-<form action="${pageContext.request.contextPath}/rent/performAuth" method="post">
+<form action="${pageContext.request.contextPath}/rent/auth" method="post">
     <input type="hidden" name="command" value="authorization">
     <label for="login">Username</label>
     <input id="login" name="login" type="text">

@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Registration</h1>
-<form method="post" action="${pageContext.request.contextPath}/test/performReg">
+<form method="post" action="${pageContext.request.contextPath}/rent/reg">
     <input type="hidden" name="command" value="registration">
     <label for="name">Name</label>
     <input id="name" name="name" type="text">

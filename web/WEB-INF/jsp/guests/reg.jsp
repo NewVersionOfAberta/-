@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Registration</h1>
-<form action="/rent" method="post">
+<form method="post" action="${pageContext.request.contextPath}/test/reg">
     <input type="hidden" name="command" value="registration">
     <label for="name">Name</label>
     <input id="name" name="name" type="text">
@@ -17,7 +17,7 @@
     <input id="email" name="email" type="email">
     <label for="password">Password</label>
     <input id="password" name="password" type="password">
-    <input type="submit">
+    <input type="submit" >
 </form>
 </body>
 </html>

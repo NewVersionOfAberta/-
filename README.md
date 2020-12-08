@@ -1,2 +1,1 @@
-# LAB#1
-Simple car renting service
+Система аренды машин

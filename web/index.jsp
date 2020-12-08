@@ -6,7 +6,7 @@
 <body>
 <h1>Rent</h1>
 <p>Rent-a-car platform</p>
-<a href="${pageContext.request.contextPath}/WEB-INF/jsp/guests">Join us</a>
-<a href="${pageContext.request.contextPath}/WEB-INF/jsp/guests">Sign in</a>
+<a href="${pageContext.request.contextPath}/rent/reg">Join us</a>
+<a href="${pageContext.request.contextPath}/rent/auth">Sign in</a>
 </body>
 </html>

@@ -6,8 +6,11 @@ import com.natali.dao.connection.ConnectionProvider;
 import com.natali.dao.connection.ConnectionProviderException;
 import com.natali.dao.interfaces.RentDao;
 import com.natali.dto.RentCarStruct;
+import com.natali.entity.Car;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SqlRentDao implements RentDao {
     private final ConnectionProvider connectionProvider;
@@ -40,5 +43,25 @@ public class SqlRentDao implements RentDao {
         } catch (ConnectionProviderException | SQLException e) {
             throw new DaoException(e);
         }
+    }
+
+    @Override
+    public List<Car> getCarList() throws ConnectionProviderException, SQLException {
+        List<Car> cars = new ArrayList<>();
+        try (Connection connection = connectionProvider.getConnection()) {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet =
+                    statement.executeQuery("SELECT id, mark, price, color FROM car WHERE is_rented = false");
+            Car car;
+            while(resultSet.next()){
+                car = new Car();
+                car.setId(resultSet.getInt("id"));
+                car.setMark(resultSet.getString("mark"));
+                car.setPrice(resultSet.getInt("price"));
+                car.setColor(resultSet.getString("color"));
+                cars.add(car);
+            }
+        }
+        return cars;
     }
 }

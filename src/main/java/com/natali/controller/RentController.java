@@ -16,16 +16,13 @@ import java.util.*;
 public class RentController extends HttpServlet {
     private static final String RELATIVE_CONTROLLER_PATH = "rent";
 
-    private static final String CATALOG_JSP_PATH = "/WEB-INF/jsp/rent/rent.jsp";
-    private static final String REG_JSP_PATH = "/WEB-INF/jsp/guests/reg.jsp";
-
 
     private static final String LIST_RELATIVE_PATH = "list";
     private static final String REG_RELATIVE_PATH = "reg";
     private static final String AUTH_RELATIVE_PATH = "auth";
     private static final String REG_FORM_RELATIVE_PATH = "regForm";
     private static final String AUTH_FORM_RELATIVE_PATH = "authForm";
-
+    private static final String CATALOG_FORM_RELATIVE_PATH = "Form";
 
     private final Map<String, Command> requestHandlers;
 

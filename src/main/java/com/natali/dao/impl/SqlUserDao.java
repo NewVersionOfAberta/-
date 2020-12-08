@@ -1,6 +1,5 @@
 package com.natali.dao.impl;
 
-import com.natali.dao.Creteria;
 import com.natali.dao.Dao;
 import com.natali.dao.DaoException;
 import com.natali.dao.connection.ConnectionProvider;
@@ -51,11 +50,6 @@ public class SqlUserDao implements Dao<User> {
                 }
             }
         }
-    }
-
-    @Override
-    public List<User> getByCriteria(Creteria creteria) {
-        return null;
     }
 
     @Override
